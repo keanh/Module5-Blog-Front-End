@@ -1,0 +1,169 @@
+<!--<div *ngIf="post; else nothing">-->
+<!--  <h4>-->
+<!--    {{post.tittle}}-->
+<!--  </h4>-->
+<!--  <div [innerHTML]="post.content"></div>-->
+<!--</div>-->
+
+<!--<ng-template #nothing>-->
+<!--  <p>Nothing to show</p>-->
+<!--</ng-template>-->
+<link rel="stylesheet" href="/assets/view.css">
+
+<div *ngIf="post">
+  <div class="blog-wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <ul class="bolg-post-list">
+            <!--                    <th:block th:each="blog : ${blogs}">-->
+            <li>
+              <article class="blog-post">
+                <div class="featured-post">
+                  <a>
+<!--                    th:href="@{/user/search/__${blog.id}__ }"-->
+                    <img [src]="post.picture" alt="" width="465px" height="400px">
+                  </a>
+                </div>
+                <div class="divider25"></div>
+                <div class="content">
+                  <h3 class="title">
+                    <a href="#">{{post.tittle}}</a>
+                  </h3>
+                  <ul class="meta-post">
+                    <li class="comment">
+                      <a href="#">
+                        Comments
+                      </a>
+                    </li>
+                    <li class="date">
+                      <a href="#">
+                        February 20, 2017
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="entry-post">
+                    <p [innerHTML]="post.content"></p>
+<!--                    <div class="more-link">-->
+<!--                      <a th:href="@{/user/edit/__${blog.id}__ }" class="read-more-btn">Edit blog</a>-->
+<!--                    </div>-->
+                  </div>
+                  <button class="btn btn-primary" (click)="deletePost(post.id)">Delete</button>
+                  <button class="btn btn-primary" [routerLink]="['/blog',post.id,'edit']">Edit</button>
+<!--                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">-->
+<!--                    Delete blog-->
+<!--                  </button>-->
+<!--                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
+<!--                    <div class="modal-dialog modal-dialog-centered" role="document">-->
+<!--                      <div class="modal-content">-->
+<!--                        <div class="modal-header">-->
+<!--                          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>-->
+<!--                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                            <span aria-hidden="true">&times;</span>-->
+<!--                          </button>-->
+<!--                        </div>-->
+<!--                        <div class="modal-body">-->
+<!--                          Delete this blog ? Are you sure?-->
+<!--                        </div>-->
+<!--                        <div class="modal-footer">-->
+<!--                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                          <button class="btn btn-primary" (click)="deletePost(post.id)">Delete</button>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+                </div>
+              </article>
+            </li>
+          </ul>
+          <div class="blog-pagination">
+            <ul class="">
+              <li class="prev">
+                <a href="#">
+                  <i class="fas fa-chevron-left"></i>
+                </a>
+              </li>
+              <li class="active">
+                <a href="#" class="waves-effect waves-teal">01</a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect waves-teal">02</a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect waves-teal">03</a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect waves-teal">04</a>
+              </li>
+              <li class="next">
+                <a href="#">
+                  <i class="fas fa-chevron-right"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 sidebar">
+          <div class="widget widget-search">
+            <form action="#" method="get" accept-charset="utf-8">
+              <input type="text" name="widget-search" placeholder="Search">
+            </form>
+          </div>
+          <div class="widget widget-categories">
+            <div class="widget-title">
+              <h3>Categories</h3>
+            </div>
+            <ul class="cat-list">
+              <li>
+                <a href="#"><i class="fas fa-chevron-right"></i> Accessories<span>(03)</span></a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-chevron-right"></i> Cameras<span>(19)</span></a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-chevron-right"></i> Computers<span>(56)</span></a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-chevron-right"></i> Laptops<span>(03)</span></a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-chevron-right"></i> Networking<span>(03)</span></a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-chevron-right"></i> Old Products<span>(89)</span></a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-chevron-right"></i> Smartphones<span>(90)</span></a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-chevron-right"></i> Software<span>(23)</span></a>
+              </li>
+            </ul>
+          </div>
+          <div class="widget widget-tags">
+            <div class="widget-title">
+              <h3>Popular Tags</h3>
+            </div>
+            <ul class="tag-list">
+              <li>
+                <a href="#" class="waves-effect waves-teal">Phone</a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect waves-teal">Cameras</a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect waves-teal">Computers</a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect waves-teal">Laptops</a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect waves-teal">Headphones</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

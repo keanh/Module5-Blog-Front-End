@@ -1,0 +1,163 @@
+<!--<h2>Simple Blog</h2>-->
+<!--<form [formGroup]="postForm" (ngSubmit)="onSubmit()">-->
+<!--  <div>-->
+<!--    <label>-->
+<!--      Title-->
+<!--      <br>-->
+<!--      <input type="text" formControlName="tittle">-->
+<!--    </label>-->
+<!--  </div>-->
+<!--  <div *ngIf="postForm.get('tittle').invalid && postForm.get('tittle').touched" style="color: red">-->
+<!--    Title is required and min length is 10-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label>-->
+<!--      Body-->
+<!--      <br>-->
+<!--      <textarea formControlName="content" cols="30" rows="10"></textarea>-->
+<!--    </label>-->
+<!--  </div>-->
+<!--  <div *ngIf="postForm.get('content').invalid && postForm.get('content').touched" style="color: red">-->
+<!--    Body is required and min length is 10-->
+<!--  </div>-->
+<!--  <button type="submit">Submit</button>-->
+<!--</form>-->
+
+<!--<ul>-->
+<!--  <li *ngFor="let post of postList; index as i">-->
+<!--      <h3>-->
+<!--        <a [routerLink]="['/blog',post.id]">-->
+<!--          Post Id: {{post.id}} - {{post.tittle}}-->
+<!--        </a>-->
+<!--      </h3>-->
+<!--      <a [routerLink]="['/blog',post.id,'edit']">Edit</a>-->
+<!--    <button (click)="deletePost(i)">Delete</button>-->
+<!--  </li>-->
+<!--</ul>-->
+<link rel="stylesheet" href="/assets/home.css">
+<div class="blog-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 blog-left">
+        <ul class="bolg-post-list">
+            <li *ngFor="let blog of postList">
+              <article class="blog-post">
+                <div class="featured-post">
+                  <a [routerLink]="['/blog',blog.id]">
+                    <img [src]="blog.picture" alt="" width="232.5px" height="200px">
+                  </a>
+                </div>
+                <div class="divider25"></div>
+                <div class="content">
+                  <h3 class="title">
+                    <a [routerLink]="['/blog',blog.id]">{{blog.tittle}}</a>
+                  </h3>
+                  <ul class="meta-post">
+                    <li class="comment">
+                      <a href="#">
+                        Comments
+                      </a>
+                    </li>
+                    <li class="date">
+                      <a href="#">
+                        February 20, 2017
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="entry-post">
+                    <p [innerHTML]="blog.content"></p>
+                  </div>
+                  <div class="more-link">
+                    <a class="read-more-btn" [routerLink]="['/blog',blog.id]">Read More</a>
+                  </div>
+                </div>
+              </article>
+            </li>
+        </ul>
+        <div class="blog-pagination">
+          <ul class="">
+            <li class="prev">
+              <a href="#">
+                <i class="fas fa-chevron-left"></i>
+              </a>
+            </li>
+            <li class="active">
+              <a href="#" class="waves-effect waves-teal">01</a>
+            </li>
+            <li>
+              <a href="#" class="waves-effect waves-teal">02</a>
+            </li>
+            <li>
+              <a href="#" class="waves-effect waves-teal">03</a>
+            </li>
+            <li>
+              <a href="#" class="waves-effect waves-teal">04</a>
+            </li>
+            <li class="next">
+              <a href="#">
+                <i class="fas fa-chevron-right"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3 sidebar">
+        <div class="widget widget-categories">
+          <div class="widget-title">
+            <h3>Categories</h3>
+          </div>
+          <ul class="cat-list">
+<!--            <th:block th:each="c : ${categories}">-->
+              <li *ngFor="let c of categories">
+                <i class="fas fa-chevron-right"></i>
+                <a (click)="onSearchBlogByCategory(c.name, c.id)">{{c.name}}</a>
+<!--                th:href="@{/user/search-by-category/__${c.name}__/__${c.id}__}" th:text="${c.name}"-->
+              </li>
+<!--            </th:block>-->
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Computers<span>(56)</span></a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Laptops<span>(03)</span></a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Networking<span>(03)</span></a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Old Products<span>(89)</span></a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Smartphones<span>(90)</span></a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Software<span>(23)</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="widget widget-tags">
+          <div class="widget-title">
+            <h3>Popular Tags</h3>
+          </div>
+          <ul class="tag-list">
+            <li>
+              <a href="#" class="waves-effect waves-teal">Phone</a>
+            </li>
+            <li>
+              <a href="#" class="waves-effect waves-teal">Cameras</a>
+            </li>
+            <li>
+              <a href="#" class="waves-effect waves-teal">Computers</a>
+            </li>
+            <li>
+              <a href="#" class="waves-effect waves-teal">Laptops</a>
+            </li>
+            <li>
+              <a href="#" class="waves-effect waves-teal">Headphones</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<app-footer></app-footer>-->
